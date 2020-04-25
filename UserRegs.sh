@@ -3,6 +3,7 @@
 NAME_PATTERN="^[[:upper:]][[:lower:]]{2,}$"
 EMAIL_PATTERN="^[a-zA-Z0-9]+([._+-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2})*$"
 MOB_NUM_PATTERN="^[1-9]{2}[ ]*[6-9]{1}[0-9]{9}$"
+PSWD_PATTERN="[0-9a-zA-Z]{8}"
 
 patternValidator(){
 	if [[ $1 =~ $2 ]]
@@ -41,3 +42,8 @@ echo "enter mobile number"
 read mobileNum
 
 moblieNumValidator
+
+echo "enter password"
+read pswd
+
+patternValidator $pswd $PSWD_PATTERN
