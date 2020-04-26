@@ -8,6 +8,7 @@ MOB_NUM_PAT="^[1-9]{2}[ ]*[6-9]{1}[0-9]{9}$"
 
 PSWD_PAT=".{8,}"
 PSWD_PAT="[[:upper:]]+"
+PSWD_PAT="[0-9]+"
 
 patternValidator(){
 	if [[ $1 =~ $2 ]]
