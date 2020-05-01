@@ -1,17 +1,17 @@
 #!/bin/bash -x
 
-NAME_PAT="^[[:upper:]][[:lower:]]{2,}$"
+NAME_PATTERN="^[[:upper:]][[:lower:]]{2,}$"
 
-EMAIL_PAT="^[a-zA-Z0-9]+([._+-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2})*$"
+EMAIL_PATTERN="^[a-zA-Z0-9]+([._+-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2})*$"
 
-MOB_NUM_PAT="^[1-9]{2}[ ]*[6-9]{1}[0-9]{9}$"
+MOBILE_NUMBER_PATTERN="^[1-9]{2}[ ]*[6-9]{1}[0-9]{9}$"
 
-PSWD_PAT1=".{8,}"
-PSWD_PAT2="[[:upper:]]+"
-PSWD_PAT3="[0-9]+"
-PSWD_PAT4="[^0-9a-zA-Z]{1}"
+PASSWORD_PATTERN1=".{8,}"
+PASSWORD_PATTERN2="[[:upper:]]+"
+PASSWORD_PATTERN3="[0-9]+"
+PASSWORD_PATTERN4="[^0-9a-zA-Z]{1}"
 
-patternValidator(){
+nameEmailValidator(){
 	if [[ $1 =~ $2 ]]
 	then
 		echo Valid
@@ -20,8 +20,8 @@ patternValidator(){
 	fi
 }
 
-moblieNumValidator(){
-	if [[ $mobileNum =~ $MOB_NUM_PAT ]]
+moblieNumberValidator(){
+	if [[ $mobileNumber =~ $MOBILE_NUMBER_PATTERN ]]
 	then
 		echo Valid
 	else
@@ -29,8 +29,8 @@ moblieNumValidator(){
 	fi
 }
 
-pswdValidator(){
-	if [[ $1 =~ $PSWD_PAT1 && $1 =~ $PSWD_PAT2 && $1 =~ $PSWD_PAT3 && $1 =~ $PSWD_PAT4 ]]
+passwordValidator(){
+	if [[ $1 =~ $PASSWORD_PATTERN1 && $1 =~ $PASSWORD_PATTERN2 && $1 =~ $PASSWORD_PATTERN3 && $1 =~ $PASSWORD_PATTERN4 ]]
 	then
 		echo Valid
 	else
@@ -39,26 +39,26 @@ pswdValidator(){
 }
 
 echo "enter first name"
-read fName
+read firstName
 
-patternValidator $fName $NAME_PAT
+nameEmailValidator $firstName $NAME_PATTERN
 
 echo "enter last name"
-read lName
+read lastName
 
-patternValidator $lName $NAME_PAT
+nameEmailValidator $lastName $NAME_PATTERN
 
-echo "enter email"
-read email
+echo "enter emailId"
+read emailId
 
-patternValidator $email $EMAIL_PAT
+nameEmailValidator $emailId $EMAIL_PATTERN
 
 echo "enter mobile number"
-read mobileNum
+read mobileNumber
 
-moblieNumValidator
+moblieNumberValidator
 
 echo "enter password"
-read pswd
+read password
 
-pswdValidator $pswd
+passwordValidator $password
